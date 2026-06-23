@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handover Notes | Digital Work Handover System</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="brand">Digital Work Handover System</div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="my-tasks.html">My Tasks</a>
+      <a href="handover-notes.html" class="active">Handover Notes</a>
+      <a href="availability.html">Availability</a>
+      <a href="#" class="logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- BACKGROUND -->
+  <section class="dashboard-bg">
+    <div class="dashboard-overlay"></div>
+
+    <div class="dashboard-wrapper">
+      <div class="page-header">
+        <h1 class="dashboard-title">Handover Notes</h1>
+        <button class="btn primary" id="createHandoverBtn">+ Create Handover Note</button>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters-section">
+        <select id="statusFilter" class="filter-select">
+          <option value="">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="acknowledged">Acknowledged</option>
+          <option value="completed">Completed</option>
+        </select>
+        <select id="directionFilter" class="filter-select">
+          <option value="">All Directions</option>
+          <option value="sent">Sent by Me</option>
+          <option value="received">Received by Me</option>
+        </select>
+      </div>
+
+      <!-- Handovers List -->
+      <div class="handovers-container" id="handoversContainer">
+        <div class="loading-spinner">Loading handover notes...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Create/Edit Handover Modal -->
+  <div id="handoverModal" class="modal">
+    <div class="modal-content large-modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Create Handover Note</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <form id="handoverForm">
+        <input type="hidden" id="handoverId">
+        
+        <div class="form-group">
+          <label for="handoverTask">Task <span class="required">*</span></label>
+          <select id="handoverTask" required>
+            <option value="">Select a task</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="handoverToUser">Handover To <span class="required">*</span></label>
+          <select id="handoverToUser" required>
+            <option value="">Select user</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="handoverKnowledge">Knowledge Transfer <span class="required">*</span></label>
+          <textarea id="handoverKnowledge" rows="6" required placeholder="Describe the key information, processes, and context needed to continue this work..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Key Contacts</label>
+          <div id="keyContactsContainer">
+            <div class="contact-item">
+              <input type="text" placeholder="Name" class="contact-name">
+              <input type="email" placeholder="Email" class="contact-email">
+              <input type="text" placeholder="Role" class="contact-role">
+              <button type="button" class="remove-contact">Remove</button>
+            </div>
+          </div>
+          <button type="button" class="btn secondary" id="addContactBtn">+ Add Contact</button>
+        </div>
+
+        <div class="form-group">
+          <label>Important Files</label>
+          <div id="filesContainer">
+            <div class="file-item">
+              <input type="text" placeholder="File Name" class="file-name">
+              <input type="text" placeholder="Location/URL" class="file-location">
+              <input type="text" placeholder="Description" class="file-description">
+              <button type="button" class="remove-file">Remove</button>
+            </div>
+          </div>
+          <button type="button" class="btn secondary" id="addFileBtn">+ Add File</button>
+        </div>
+
+        <div class="form-group">
+          <label>Access Credentials</label>
+          <div id="credentialsContainer">
+            <div class="credential-item">
+              <input type="text" placeholder="Platform" class="credential-platform">
+              <input type="text" placeholder="Username" class="credential-username">
+              <input type="text" placeholder="Notes" class="credential-notes">
+              <button type="button" class="remove-credential">Remove</button>
+            </div>
+          </div>
+          <button type="button" class="btn secondary" id="addCredentialBtn">+ Add Credential</button>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn primary">Save Handover Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/handovers.js"></script>
+</body>
+</html>

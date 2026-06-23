@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manager Dashboard | Digital Work Handover System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="brand">Manager Dashboard</div>
+    <nav class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Team Overview</a>
+      <a href="#">Risk Monitor</a>
+      <a href="#" class="logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- BACKGROUND -->
+  <section class="dashboard-bg">
+    <div class="dashboard-overlay"></div>
+
+    <div class="dashboard-wrapper">
+
+      <!-- WELCOME -->
+      <h1 class="dashboard-title">Good Morning, Manager 👋</h1>
+      <p class="sub-greet">
+        Monitor team availability, detect risks early, and ensure uninterrupted work.
+      </p>
+
+      <!-- TOP METRICS -->
+      <section class="summary-grid">
+        <div class="summary-card success">
+          <h3>Team Size</h3>
+          <div class="count" id="teamSize">0</div>
+        </div>
+
+        <div class="summary-card highlight">
+          <h3>Total Team Tasks</h3>
+          <div class="count" id="totalTeamTasks">0</div>
+        </div>
+
+        <div class="summary-card warning">
+          <h3>Pending Handovers</h3>
+          <div class="count" id="pendingHandovers">0</div>
+        </div>
+
+        <div class="summary-card risk">
+          <h3>High Risk Tasks</h3>
+          <div class="count" id="highRiskTasks">0</div>
+        </div>
+
+        <div class="summary-card warning">
+          <h3>Unavailable Members</h3>
+          <div class="count" id="unavailableMembers">0</div>
+        </div>
+      </section>
+
+      <!-- LOWER GRID -->
+      <section class="manager-lower-grid">
+
+        <!-- HIGH RISK TASKS -->
+        <div class="manager-card risk">
+          <h3>⚠ High Risk Tasks</h3>
+          <div id="highRiskTasksList">
+            <p class="loading-text">Loading...</p>
+          </div>
+        </div>
+
+        <!-- PENDING HANDOVERS -->
+        <div class="manager-card highlight">
+          <h3>📋 Pending Handovers</h3>
+          <div id="pendingHandoversList">
+            <p class="loading-text">Loading...</p>
+          </div>
+        </div>
+
+        <!-- UNAVAILABLE MEMBERS -->
+        <div class="manager-card warning">
+          <h3>👥 Unavailable Team Members</h3>
+          <div id="unavailableMembersList">
+            <p class="loading-text">Loading...</p>
+          </div>
+          <p class="muted" style="margin-top: 16px;">
+            UiPath automation will trigger alerts automatically.
+          </p>
+        </div>
+
+      </section>
+
+    </div>
+  </section>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/manager-dashboard.js"></script>
+</body>
+</html>

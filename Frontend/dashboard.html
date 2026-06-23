@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Digital Work Handover System</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="brand">Digital Work Handover System</div>
+    <nav class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="my-tasks.html">My Tasks</a>
+      <a href="handover-notes.html">Handover Notes</a>
+      <a href="availability.html">Availability</a>
+      <a href="#" class="logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- DASHBOARD BACKGROUND -->
+  <section class="dashboard-bg">
+    <div class="dashboard-overlay"></div>
+
+    <!-- CONTENT -->
+    <div class="dashboard-wrapper">
+
+      <!-- WELCOME -->
+      <h1 class="dashboard-title" id="welcomeTitle">
+        Welcome back 👋
+      </h1>
+      <p class="sub-greet">
+        "Small progress every day leads to big results."
+      </p>
+
+      <!-- SUMMARY -->
+      <section class="summary-grid">
+        <div class="summary-card success">
+          <h3>Active Tasks</h3>
+          <div class="count" id="activeTasksCount">0</div>
+        </div>
+
+        <div class="summary-card warning">
+          <h3>Pending Handovers</h3>
+          <div class="count" id="pendingHandoversCount">0</div>
+        </div>
+
+        <div class="summary-card highlight">
+          <h3>Availability</h3>
+          <div class="availability-toggle" id="availabilityStatus">
+            <span class="dot green"></span> <span id="availabilityText">Available</span>
+          </div>
+        </div>
+
+        <div class="summary-card risk">
+          <h3>Risk Tasks</h3>
+          <div class="count" id="riskTasksCount">0</div>
+        </div>
+      </section>
+
+      <!-- CONTINUITY ALERTS -->
+      <section class="continuity-card">
+        <h3>⚠ Work Continuity Alerts</h3>
+        <div id="alertsList">
+          <p class="loading-text">Loading alerts...</p>
+        </div>
+        <p class="muted">
+          Automated reminders will be triggered using UiPath.
+        </p>
+      </section>
+
+      <!-- Risk Tasks List -->
+      <section class="risk-tasks-section" id="riskTasksSection" style="display: none;">
+        <h3>🔴 High Risk Tasks</h3>
+        <div id="riskTasksList"></div>
+      </section>
+
+    </div>
+  </section>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

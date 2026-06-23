@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Availability | Digital Work Handover System</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="brand">Digital Work Handover System</div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="my-tasks.html">My Tasks</a>
+      <a href="handover-notes.html">Handover Notes</a>
+      <a href="availability.html" class="active">Availability</a>
+      <a href="#" class="logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- BACKGROUND -->
+  <section class="dashboard-bg">
+    <div class="dashboard-overlay"></div>
+
+    <div class="dashboard-wrapper">
+      <h1 class="dashboard-title">My Availability</h1>
+      <p class="sub-greet">
+        Update your availability status to help ensure work continuity
+      </p>
+
+      <div class="availability-card">
+        <form id="availabilityForm">
+          <div class="form-group">
+            <label for="availabilityStatus">Current Status <span class="required">*</span></label>
+            <select id="availabilityStatus" required>
+              <option value="available">✅ Available</option>
+              <option value="unavailable">❌ Unavailable</option>
+              <option value="on-leave">🏖️ On Leave</option>
+              <option value="sick-leave">🏥 Sick Leave</option>
+              <option value="vacation">✈️ Vacation</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="startDate">Start Date</label>
+              <input type="date" id="startDate">
+            </div>
+
+            <div class="form-group">
+              <label for="endDate">End Date</label>
+              <input type="date" id="endDate">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reason">Reason / Notes</label>
+            <textarea id="reason" rows="4" placeholder="Provide details about your availability..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Emergency Contact</label>
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="emergencyName" placeholder="Contact Name">
+              </div>
+              <div class="form-group">
+                <input type="email" id="emergencyEmail" placeholder="Contact Email">
+              </div>
+              <div class="form-group">
+                <input type="tel" id="emergencyPhone" placeholder="Contact Phone">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="autoReminder" checked>
+              <span>Enable automated reminders via UiPath</span>
+            </label>
+            <small class="help-text">
+              When enabled, automated reminders will be sent to your backup owners and managers
+            </small>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Update Availability</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Current Status Display -->
+      <div class="status-display-card" id="statusDisplay">
+        <h3>Current Status</h3>
+        <div class="status-info">
+          <div class="status-badge" id="currentStatusBadge">Loading...</div>
+          <div class="status-details" id="statusDetails"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/availability.js"></script>
+</body>
+</html>

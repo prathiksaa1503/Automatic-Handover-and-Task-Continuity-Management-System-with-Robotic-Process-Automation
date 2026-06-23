@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Digital Work Handover System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="brand">Admin Dashboard</div>
+    <nav class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Users</a>
+      <a href="#">System Health</a>
+      <a href="#" class="logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- BACKGROUND -->
+  <section class="dashboard-bg">
+    <div class="dashboard-overlay"></div>
+
+    <div class="dashboard-wrapper">
+
+      <!-- WELCOME -->
+      <h1 class="dashboard-title">Welcome, Admin 👑</h1>
+      <p class="sub-greet">
+        Full system visibility, control, and automation monitoring.
+      </p>
+
+      <!-- SYSTEM STATS -->
+      <section class="summary-grid">
+
+        <div class="summary-card success">
+          <h3>Total Users</h3>
+          <div class="count" id="totalUsers">0</div>
+        </div>
+
+        <div class="summary-card highlight">
+          <h3>Active Employees</h3>
+          <div class="count" id="activeEmployees">0</div>
+        </div>
+
+        <div class="summary-card warning">
+          <h3>Managers</h3>
+          <div class="count" id="managers">0</div>
+        </div>
+
+        <div class="summary-card risk">
+          <h3>Open Risk Tasks</h3>
+          <div class="count" id="openRiskTasks">0</div>
+        </div>
+
+      </section>
+
+      <!-- LOWER SECTION -->
+      <section class="admin-lower-grid">
+
+        <!-- AUTOMATION STATUS -->
+        <div class="admin-card highlight">
+          <h3>🤖 Automation Status</h3>
+
+          <p>
+            UiPath bots are actively monitoring:
+          </p>
+
+          <ul class="admin-list">
+            <li>✔ Task handover deadlines</li>
+            <li>✔ Backup ownership validation</li>
+            <li>✔ Leave without documentation</li>
+          </ul>
+
+          <p class="muted">
+            Last automation run: <strong>10 minutes ago</strong>
+          </p>
+        </div>
+
+        <!-- SYSTEM ALERTS -->
+        <div class="admin-card risk">
+          <h3>⚠ System Alerts</h3>
+
+          <p>• <span id="tasksWithoutBackup">0</span> tasks exceed SLA without backup</p>
+          <p>• <span id="inactiveUsers">0</span> employees inactive for 48+ hours</p>
+          <p>• <span id="pendingHandovers">0</span> handovers pending</p>
+
+          <button class="mini-btn">View Logs</button>
+        </div>
+
+      </section>
+
+      <!-- USER OVERVIEW -->
+      <section class="table-card">
+        <h3>👥 User Overview</h3>
+
+        <table id="userTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Last Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="4" class="loading-text">Loading users...</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </section>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

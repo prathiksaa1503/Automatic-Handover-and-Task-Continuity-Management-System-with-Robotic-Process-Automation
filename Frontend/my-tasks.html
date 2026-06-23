@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tasks | Digital Work Handover System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="brand">Digital Work Handover System</div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="my-tasks.html" class="active">My Tasks</a>
+      <a href="handover-notes.html">Handover Notes</a>
+      <a href="availability.html">Availability</a>
+      <a href="#" class="logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- BACKGROUND -->
+  <section class="dashboard-bg">
+    <div class="dashboard-overlay"></div>
+
+    <div class="dashboard-wrapper">
+      <div class="page-header">
+        <h1 class="dashboard-title">My Tasks</h1>
+        <button class="btn primary" id="createTaskBtn">+ Create New Task</button>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters-section">
+        <select id="statusFilter" class="filter-select">
+          <option value="">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+          <option value="on-hold">On Hold</option>
+        </select>
+        <select id="priorityFilter" class="filter-select">
+          <option value="">All Priorities</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="critical">Critical</option>
+        </select>
+        <select id="riskFilter" class="filter-select">
+          <option value="">All Tasks</option>
+          <option value="true">Risk Tasks Only</option>
+        </select>
+      </div>
+
+      <!-- Tasks List -->
+      <div class="tasks-container" id="tasksContainer">
+        <div class="loading-spinner">Loading tasks...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Create/Edit Task Modal -->
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Create New Task</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+        
+        <div class="form-group">
+          <label for="taskTitle">Title <span class="required">*</span></label>
+          <input type="text" id="taskTitle" required>
+        </div>
+
+        <div class="form-group">
+          <label for="taskDescription">Description</label>
+          <textarea id="taskDescription" rows="4"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+              <option value="critical">Critical</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="taskStatus">Status</label>
+            <select id="taskStatus">
+              <option value="pending" selected>Pending</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+              <option value="on-hold">On Hold</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="taskDueDate">Due Date</label>
+          <input type="date" id="taskDueDate">
+        </div>
+
+        <div class="form-group">
+          <label for="taskCategory">Category</label>
+          <input type="text" id="taskCategory" placeholder="e.g., Development, Documentation">
+        </div>
+
+        <div class="form-group">
+          <label for="taskBackupOwner">Backup Owner</label>
+          <select id="taskBackupOwner">
+            <option value="">Select backup owner</option>
+          </select>
+          <small class="help-text">Assign a backup owner to reduce risk</small>
+        </div>
+
+        <div class="form-group">
+          <label for="taskTags">Tags (comma-separated)</label>
+          <input type="text" id="taskTags" placeholder="urgent, client-facing, documentation">
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/tasks.js"></script>
+</body>
+</html>
